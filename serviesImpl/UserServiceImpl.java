@@ -83,8 +83,10 @@ public class UserServiceImpl implements UserService {
 		
 		for (int i = 0; i < cCount; i++) {
 			if (userId.equals(cbs[i].getId())) {
+
 				if(userPw.equals(cbs[i].getPass())) {
 					result = true;
+					break;
 				}
 			}
 		}
@@ -113,17 +115,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updatePass(CustomerBean param) {
         
-		String[] arr = new String[2];
-		arr = param.getPass().split(",");
 		String id = param.getId();
-		String pw = arr[0];
-		
-		System.out.println(arr[0]);
-		System.out.println(arr[1]);
+		String oldPw = param.getPass().substring(0, 4);
+		String newPW= param.getPass().substring(4, 8);
 		
         for (int i = 0; i < cCount; i++) {
-                  if(id.equals(cbs[i].getId()) && pw.equals(arr[0])) {
-                	  	cbs[i].setPass(arr[1]);
+                  if(id.equals(cbs[i].getId()) && oldPw.equals(cbs[i].getPass())) {
+                	  	cbs[i].setPass(newPW);
                         break;
                   }
         }

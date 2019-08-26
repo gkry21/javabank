@@ -65,11 +65,13 @@ public class UserController {
 				
 				break;
 			case "05":
+				cb = new CustomerBean();
 				String[] arr = JOptionPane.showInputDialog("아이디, 비번을 입력하세요").split(",");
 				cb.setId(arr[0]);
 				cb.setPass(arr[1]);
+				System.out.println(us.login(cb));
 				
-				if(us.login(cb)==true) {
+				if(us.login(cb)) {
 					JOptionPane.showMessageDialog(null, "로그인에 성공하였습니다.");
 				}else {
 					JOptionPane.showMessageDialog(null, "로그인 실패");
@@ -88,7 +90,7 @@ public class UserController {
                 }
 				break;
 			case "08":
-				arr= null;
+				cb = new CustomerBean();
 				arr = JOptionPane.showInputDialog("아이디, 이전 비번 , 새로 변경할 비번을 입력하세요").split(",");
 				cb.setId(arr[0]);
 				cb.setPass(arr[1]+arr[2]);
@@ -97,10 +99,10 @@ public class UserController {
 				
 				break;
 			case "09":
-				arr= null;
+				cb = new CustomerBean();
 				arr = JOptionPane.showInputDialog("삭제할 아이디와 비번을 입력하세요").split(",");
 				cb.setId(arr[0]);
-				cb.setPass(arr[1]+","+arr[2]);
+				cb.setPass(arr[1]);
 				us.deleteMember(cb);
 				
 				break;
