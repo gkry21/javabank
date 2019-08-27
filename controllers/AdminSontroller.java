@@ -74,7 +74,7 @@ public class AdminSontroller {
 				accountBean = new AccountBean();
 				accountBean.setAccountNum(arr1[0]);
 				accountBean.setMoney(arr1[1]);
-				as.depositMoney(accountBean);
+				as.withdrawMoney(accountBean);
 				break;
 			case "08":
 				as.deleteAccountNum(JOptionPane.showInputDialog("계좌번호를 입력하세요"));
