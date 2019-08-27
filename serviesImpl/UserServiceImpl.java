@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
 		cCnt =0;
 		for (int i = 0; i < cCount; i++) {
 			if(name.equals(cbs[i].getName())) {
-				userBean[cCnt-1] = cbs[i];
+				userBean[cCnt] = cbs[i];
 				if ((userBean.length-aCnt)==cCnt ) {  //CustomerBean에서 찾은 이름 수만큼 찾은 후 종료  
 					break;
 				}
@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
 		aCnt = 0;
 		for (int i = 0; i < aCount ; i++) {
 			if(name.equals(abs[i].getName())) {
-				userBean[cCnt+aCnt-1] = abs[i];
+				userBean[cCnt+aCnt] = abs[i];
 				if ((userBean.length-cCnt)==aCnt ) { //AdminBean에서 찾은 이름 수만큼 찾은 후 종료 
 					break;
 				}
