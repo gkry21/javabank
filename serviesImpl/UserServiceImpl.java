@@ -104,31 +104,33 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean login(UserBean param) {
 
-		boolean result = false;
-		String userId = param.getId();
-		String userPw = param.getPass();
+//		boolean result = false;
+//		String userId = param.getId();
+//		String userPw = param.getPass();
+//
+//		for (int i = 0; i < cCount; i++) {
+//			if (userId.equals(cbs[i].getId())) {
+//
+//				if(userPw.equals(cbs[i].getPass())) {
+//					result = true;
+//					break;
+//				}
+//			}
+//		}
+//		
+//		for (int i = 0; i < aCount; i++) {
+//			if (userId.equals(abs[i].getId())) {
+//				
+//				if(userPw.equals(abs[i].getPass())) {
+//					result = true;
+//					break;
+//				}
+//			}
+//		}
 
-		for (int i = 0; i < cCount; i++) {
-			if (userId.equals(cbs[i].getId())) {
-
-				if(userPw.equals(cbs[i].getPass())) {
-					result = true;
-					break;
-				}
-			}
-		}
-		
-		for (int i = 0; i < aCount; i++) {
-			if (userId.equals(abs[i].getId())) {
-				
-				if(userPw.equals(abs[i].getPass())) {
-					result = true;
-					break;
-				}
-			}
-		}
-
-		return result;
+		//return result;
+		return findById(param.getId()).getPass()
+				.equals(param.getPass());
 	}
 
 	@Override
@@ -160,7 +162,7 @@ public class UserServiceImpl implements UserService {
 		String id = param.getId();
 		String oldPw = param.getPass().substring(0, 4);
 		String newPW= param.getPass().substring(4, 8);
-
+		
 		for (int i = 0; i < cCount; i++) {
 			if(id.equals(cbs[i].getId()) && oldPw.equals(cbs[i].getPass())) {
 				cbs[i].setPass(newPW);
@@ -179,41 +181,32 @@ public class UserServiceImpl implements UserService {
 	public void deleteMember(CustomerBean param) {
 
 		String userId = param.getId();
-		String userPw = param.getPass();
 
+		if(login(param)) {
+		
 		for (int i = 0; i < cCount; i++) {
 			if(userId.equals(cbs[i].getId())){
-				if(userPw.equals(cbs[i].getPass())) {
 					//회원 탈퇴 프로세스 진행   
-					cbs[i] = null;
 					for (int j = i; j < cCount; j++) {
 						cbs[j] = cbs[j+1];
 					}
 					cbs[cbs.length-1] = null;
 					cCount-- ;
 
-					break;
-				}
 				break;
 			}
 		}
 		for (int i = 0; i < aCount; i++) {
 			if(userId.equals(abs[i].getId())){
-				if(userPw.equals(abs[i].getPass())) {
 					//회원 탈퇴 프로세스 진행   
-					abs[i] = null;
-					for (int j = i; j < aCount; j++) {
-						abs[j] = abs[j+1];
-					}
+					abs[i] = abs[aCount-1];
 					abs[abs.length-1] = null;
 					aCount-- ;
 					
 					break;
-				}
-				break;
 			}
 		}
-
+	}
 	}
 
 	@Override

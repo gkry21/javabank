@@ -80,7 +80,7 @@ public class AccountServiceImpl implements AccountService{
 
 	@Override
 	public String findDate() {
-		return new SimpleDateFormat("yyyy-MM-dd hh:Ss").format(new Date());
+		return new SimpleDateFormat("yyyy-MM-dd hh:ss").format(new Date());
 	}
 
 	@Override
@@ -125,7 +125,9 @@ public class AccountServiceImpl implements AccountService{
 		
 		for (int i = 0; i < count; i++) {
 			if (accountNum.equals(accounts[i].getAccountNum())) {
-				accounts[i] = null;
+					accounts[i] = accounts[count];
+					accounts[count] = null;
+					count--;
 				break;
 			}
 		}
