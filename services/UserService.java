@@ -1,8 +1,6 @@
 package com.javabank.services;
 
-import com.javabank.domains.AdminBean;
-import com.javabank.domains.CustomerBean;
-import com.javabank.domains.UserBean;
+import com.javabank.domains.*;
 
 public interface UserService {
 

@@ -95,11 +95,8 @@ public class AccountServiceImpl implements AccountService{
 		for (int i = 0; i < count; i++) {
 			if (accNum.equals(accounts[i].getAccountNum())) {
 				String accmoney =String.valueOf(Integer.parseInt(accounts[i].getMoney())+ Integer.parseInt(money));
-				dt = new Date();
-				sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-				String nowday = sdf.format(dt);
 				accounts[i].setMoney(accmoney);
-				accounts[i].setToday(nowday);
+				accounts[i].setToday(findDate());
 				break;
 			}
 		}
@@ -116,11 +113,8 @@ public class AccountServiceImpl implements AccountService{
 		for (int i = 0; i < count; i++) {
 			if (accNum.equals(accounts[i].getAccountNum())) {
 				String accmoney =String.valueOf(Integer.parseInt(accounts[i].getMoney())- Integer.parseInt(money));
-				dt = new Date();
-				sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-				String nowday = sdf.format(dt);
 				accounts[i].setMoney(accmoney);
-				accounts[i].setToday(nowday);
+				accounts[i].setToday(findDate());
 				break;
 			}
 		}

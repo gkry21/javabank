@@ -1,8 +1,6 @@
 package com.javabank.serviesImpl;
 
-import com.javabank.domains.AdminBean;
-import com.javabank.domains.CustomerBean;
-import com.javabank.domains.UserBean;
+import com.javabank.domains.*;
 import com.javabank.services.UserService;
 
 public class UserServiceImpl implements UserService {
