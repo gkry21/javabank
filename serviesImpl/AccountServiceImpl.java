@@ -78,7 +78,7 @@ public class AccountServiceImpl implements AccountService{
 	public String findDate() {
 		
 		Date dt = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 		String nowday = sdf.format(dt);
 		return nowday;
 	}
@@ -93,7 +93,7 @@ public class AccountServiceImpl implements AccountService{
 			if (accNum.equals(accounts[i].getAccountNum())) {
 				String accmoney =String.valueOf(Integer.parseInt(accounts[i].getMoney())+ Integer.parseInt(money));
 				Date dt = new Date();
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 				String nowday = sdf.format(dt);
 				accounts[i].setMoney(accmoney);
 				accounts[i].setToday(nowday);
@@ -114,7 +114,7 @@ public class AccountServiceImpl implements AccountService{
 			if (accNum.equals(accounts[i].getAccountNum())) {
 				String accmoney =String.valueOf(Integer.parseInt(accounts[i].getMoney())- Integer.parseInt(money));
 				Date dt = new Date();
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 				String nowday = sdf.format(dt);
 				accounts[i].setMoney(accmoney);
 				accounts[i].setToday(nowday);
