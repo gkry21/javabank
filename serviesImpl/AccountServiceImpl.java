@@ -10,7 +10,10 @@ import com.javabank.services.AccountService;
 public class AccountServiceImpl implements AccountService{
 	
 	private AccountBean[] accounts;
+	private SimpleDateFormat sdf;
+	private Date dt;
 	private int count;
+	
 	
 	public AccountServiceImpl() {
 		accounts = new AccountBean[10];
@@ -77,7 +80,7 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public String findDate() {
 		
-		Date dt = new Date();
+		dt = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 		String nowday = sdf.format(dt);
 		return nowday;
@@ -92,8 +95,8 @@ public class AccountServiceImpl implements AccountService{
 		for (int i = 0; i < count; i++) {
 			if (accNum.equals(accounts[i].getAccountNum())) {
 				String accmoney =String.valueOf(Integer.parseInt(accounts[i].getMoney())+ Integer.parseInt(money));
-				Date dt = new Date();
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+				dt = new Date();
+				sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 				String nowday = sdf.format(dt);
 				accounts[i].setMoney(accmoney);
 				accounts[i].setToday(nowday);
@@ -113,8 +116,8 @@ public class AccountServiceImpl implements AccountService{
 		for (int i = 0; i < count; i++) {
 			if (accNum.equals(accounts[i].getAccountNum())) {
 				String accmoney =String.valueOf(Integer.parseInt(accounts[i].getMoney())- Integer.parseInt(money));
-				Date dt = new Date();
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+				dt = new Date();
+				sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 				String nowday = sdf.format(dt);
 				accounts[i].setMoney(accmoney);
 				accounts[i].setToday(nowday);

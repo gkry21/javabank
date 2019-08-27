@@ -2,8 +2,10 @@ package com.javabank.domains;
 
 public class AccountBean {
 
-	private String accountNum,today,money;
+	private String accountNum, today, money;
 
+	
+	
 	public String getAccountNum() {
 		return accountNum;
 	}
@@ -36,9 +38,5 @@ public class AccountBean {
 				+ "금액 : %s \n"
 				+ "날짜 : %s \n",  accountNum,today,money );
 	}
-	
-	
-	
-	
 	
 }

@@ -36,24 +36,42 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public CustomerBean[] findByName(String name) {
-		int j = 0;
+	public UserBean[] findByName(String name) {
+		int cCnt = 0;
+		int aCnt = 0;
 
 		for (int i = 0; i < cCount; i++) {
 			if(name.equals(cbs[i].getName())) {
-				j++;
+				cCnt++;
+			}
+		}
+		for (int i = 0; i < aCount; i++) {
+			if (name.equals(abs[i].getName())) {
+				aCnt++;
 			}
 		}
 
-		CustomerBean[] userBean = new CustomerBean[j];
-		j = 0;
+		UserBean[] userBean = new UserBean[cCnt+aCnt];
+		System.out.println(userBean.length);
+		System.out.println(aCnt);
+		System.out.println(cCnt);
+		System.out.println(userBean.length-aCnt);
 		for (int i = 0; i < cCount; i++) {
 			if(name.equals(cbs[i].getName())) {
-				userBean[j] = cbs[i];
-				if (userBean.length==j ) {
+				userBean[cCnt-1] = cbs[i];
+				if ((userBean.length-aCnt)==cCnt ) {
 					break;
 				}
-				j++;
+				cCnt++;
+			}
+		}
+		for (int i = 0; i < aCount ; i++) {
+			if(name.equals(abs[i].getName())) {
+				userBean[cCnt+aCnt-1] = abs[i];
+				if ((userBean.length-cCnt)==aCnt ) {
+					break;
+				}
+				aCnt++;
 			}
 		}
 
