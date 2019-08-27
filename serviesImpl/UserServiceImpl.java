@@ -55,19 +55,21 @@ public class UserServiceImpl implements UserService {
 
 		//CustomerBean과 AdminBean에서 찾은 이름 수 만큼의 UserBean을 생성한다.
 		UserBean[] userBean = new UserBean[cCnt+aCnt];
+		//CustomerBean에서 이름 탐색하여 입력
 		for (int i = 0; i < cCount; i++) {
 			if(name.equals(cbs[i].getName())) {
 				userBean[cCnt-1] = cbs[i];
-				if ((userBean.length-aCnt)==cCnt ) {
+				if ((userBean.length-aCnt)==cCnt ) {  //CustomerBean에서 찾은 이름 수만큼 찾은 후 종료  
 					break;
 				}
 				cCnt++;
 			}
 		}
+		//AdminBean에서 탐색하여 입력
 		for (int i = 0; i < aCount ; i++) {
 			if(name.equals(abs[i].getName())) {
 				userBean[cCnt+aCnt-1] = abs[i];
-				if ((userBean.length-cCnt)==aCnt ) {
+				if ((userBean.length-cCnt)==aCnt ) { //AdminBean에서 찾은 이름 수만큼 찾은 후 종료 
 					break;
 				}
 				aCnt++;
