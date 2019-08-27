@@ -80,22 +80,29 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public CustomerBean findById(String id) {
-		int i=0;
+	public UserBean findById(String id) {
+		
 
-		CustomerBean cb = new CustomerBean();
-		for (; i < cCount; i++) {
+		UserBean ub = new UserBean();
+		for (int i=0; i < cCount; i++) {
 			if (id.equals(cbs[i].getId())) {
-				cb = cbs[i];
+				ub = cbs[i];
+				break;
+			} 
+		}
+		
+		for (int i=0; i < aCount; i++) {
+			if (id.equals(abs[i].getId())) {
+				ub = abs[i];
 				break;
 			} 
 		}
 
-		return cb;
+		return ub;
 	}
 
 	@Override
-	public boolean login(CustomerBean param) {
+	public boolean login(UserBean param) {
 
 		boolean result = false;
 		String userId = param.getId();
@@ -105,6 +112,16 @@ public class UserServiceImpl implements UserService {
 			if (userId.equals(cbs[i].getId())) {
 
 				if(userPw.equals(cbs[i].getPass())) {
+					result = true;
+					break;
+				}
+			}
+		}
+		
+		for (int i = 0; i < aCount; i++) {
+			if (userId.equals(abs[i].getId())) {
+				
+				if(userPw.equals(abs[i].getPass())) {
 					result = true;
 					break;
 				}
@@ -170,6 +187,16 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 
+	}
+
+	@Override
+	public AdminBean[] findAllAdmins() {
+		return abs;
+	}
+
+	@Override
+	public int countAdmins() {
+		return aCount;
 	}
 
 }
