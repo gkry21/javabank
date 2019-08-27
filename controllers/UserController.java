@@ -43,7 +43,7 @@ public class UserController {
 
 								break;
 							case "02":
-								JOptionPane.showMessageDialog(null, us.findAll());
+								JOptionPane.showMessageDialog(null, us.findAllCustomers());
 
 								break;
 							case "03":

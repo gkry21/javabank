@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public CustomerBean[] findAll() {
+	public CustomerBean[] findAllCustomers() {
 
 		return cbs;
 	}
@@ -144,6 +144,11 @@ public class UserServiceImpl implements UserService {
 				result = true;
 			}
 		}
+		for (int i = 0; i < aCount; i++) {
+			if (id.equals(abs[i].getId())) {
+				result = true;
+			}
+		}
 		return result;
 	}
 
@@ -157,6 +162,12 @@ public class UserServiceImpl implements UserService {
 		for (int i = 0; i < cCount; i++) {
 			if(id.equals(cbs[i].getId()) && oldPw.equals(cbs[i].getPass())) {
 				cbs[i].setPass(newPW);
+				break;
+			}
+		}
+		for (int i = 0; i < aCount; i++) {
+			if(id.equals(abs[i].getId()) && oldPw.equals(abs[i].getPass())) {
+				abs[i].setPass(newPW);
 				break;
 			}
 		}
@@ -179,6 +190,22 @@ public class UserServiceImpl implements UserService {
 					cbs[cbs.length-1] = null;
 					cCount-- ;
 
+					break;
+				}
+				break;
+			}
+		}
+		for (int i = 0; i < aCount; i++) {
+			if(userId.equals(abs[i].getId())){
+				if(userPw.equals(abs[i].getPass())) {
+					//회원 탈퇴 프로세스 진행   
+					abs[i] = null;
+					for (int j = i; j < aCount; j++) {
+						abs[j] = abs[j+1];
+					}
+					abs[abs.length-1] = null;
+					aCount-- ;
+					
 					break;
 				}
 				break;

@@ -1,7 +1,7 @@
 package com.javabank.domains;
 
 public class CustomerBean extends UserBean{
-	
+
 	private String credit;
 	
 	public CustomerBean() {

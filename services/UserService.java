@@ -5,7 +5,7 @@ import com.javabank.domains.*;
 public interface UserService {
 
 	String join(CustomerBean param);
-	CustomerBean[] findAll();
+	CustomerBean[] findAllCustomers();
 	AdminBean[] findAllAdmins();	
 	UserBean[] findByName(String name);
 	UserBean findById(String id);

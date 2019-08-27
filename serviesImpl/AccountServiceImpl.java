@@ -31,10 +31,13 @@ public class AccountServiceImpl implements AccountService{
 
 	@Override
 	public String createAccountNum() {
-		
+		String accountNum="";
 		Random  rd = new Random();
-		String temp = (rd.nextInt(100000000)+10000000)+"";
-		String accountNum =temp.substring(0, 4) +"-" + temp.substring(4, 8);
+
+		 for (int i = 0; i < 9; i++) { accountNum += (i==4)? "-": rd.nextInt(10) ; }
+		 
+		//accountNum =String.format("%4d-%4d", rd.nextInt(9999)+1,rd.nextInt(9999)+1);
+		
 		return accountNum;
 	}
 
