@@ -10,8 +10,6 @@ import com.javabank.services.AccountService;
 public class AccountServiceImpl implements AccountService{
 	
 	private AccountBean[] accounts;
-	private SimpleDateFormat sdf;
-	private Date dt;
 	private int count;
 	
 	
@@ -24,7 +22,7 @@ public class AccountServiceImpl implements AccountService{
 	public void createAccount(String money) {
 		AccountBean acc = new AccountBean();
 		acc.setAccountNum(createAccountNum());
-		acc.setMoney(money+"");
+		acc.setMoney(money);
 		acc.setToday(findDate());
 		
 		accounts[count] = acc;
@@ -35,7 +33,7 @@ public class AccountServiceImpl implements AccountService{
 	public String createAccountNum() {
 		
 		Random  rd = new Random();
-		String temp = (rd.nextInt(100000000))+"";
+		String temp = (rd.nextInt(100000000)+10000000)+"";
 		String accountNum =temp.substring(0, 4) +"-" + temp.substring(4, 8);
 		return accountNum;
 	}
@@ -79,11 +77,7 @@ public class AccountServiceImpl implements AccountService{
 
 	@Override
 	public String findDate() {
-		
-		dt = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-		String nowday = sdf.format(dt);
-		return nowday;
+		return new SimpleDateFormat("yyyy-MM-dd hh:Ss").format(new Date());
 	}
 
 	@Override
