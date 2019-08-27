@@ -40,22 +40,21 @@ public class UserServiceImpl implements UserService {
 		int cCnt = 0;
 		int aCnt = 0;
 
+		// CustomerBean 탐색
 		for (int i = 0; i < cCount; i++) {
 			if(name.equals(cbs[i].getName())) {
 				cCnt++;
 			}
 		}
+		//AdminBean 탐색
 		for (int i = 0; i < aCount; i++) {
 			if (name.equals(abs[i].getName())) {
 				aCnt++;
 			}
 		}
 
+		//CustomerBean과 AdminBean에서 찾은 이름 수 만큼의 UserBean을 생성한다.
 		UserBean[] userBean = new UserBean[cCnt+aCnt];
-		System.out.println(userBean.length);
-		System.out.println(aCnt);
-		System.out.println(cCnt);
-		System.out.println(userBean.length-aCnt);
 		for (int i = 0; i < cCount; i++) {
 			if(name.equals(cbs[i].getName())) {
 				userBean[cCnt-1] = cbs[i];
